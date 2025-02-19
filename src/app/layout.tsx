@@ -33,9 +33,17 @@ export default function RootLayout({
         <header className="bg-white shadow-sm dark:bg-gray-800 transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
-              <a href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
-                Hukuk Notları
-              </a>
+              <div className="flex items-center space-x-6">
+                <a href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Hukuk Notları
+                </a>
+                <a 
+                  href="/admin" 
+                  className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                >
+                  Admin Paneli
+                </a>
+              </div>
               <button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"

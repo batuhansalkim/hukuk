@@ -1,145 +1,206 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { FaCloudUploadAlt } from 'react-icons/fa';
 
 const categories = [
-  'Ceza Hukuku',
-  'İdare Hukuku',
-  'Anayasa Hukuku',
-  'Medeni Hukuk',
-  'Borçlar Hukuku',
-  'Ticaret Hukuku'
+  { id: 'ceza-hukuku', title: 'Ceza Hukuku' },
+  { id: 'medeni-hukuku', title: 'Medeni Hukuk' },
+  { id: 'borclar-hukuku', title: 'Borçlar Hukuku' },
+  { id: 'idare-hukuku', title: 'İdare Hukuku' },
+  { id: 'anayasa-hukuku', title: 'Anayasa Hukuku' },
+  { id: 'ticaret-hukuku', title: 'Ticaret Hukuku' },
 ];
 
 export default function AdminPage() {
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState(categories[0]);
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const droppedFile = e.dataTransfer.files[0];
+      if (droppedFile.type === 'application/pdf') {
+        setFile(droppedFile);
+      } else {
+        alert('Lütfen sadece PDF dosyası yükleyin');
+      }
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const selectedFile = e.target.files[0];
+      if (selectedFile.type === 'application/pdf') {
+        setFile(selectedFile);
+      } else {
+        alert('Lütfen sadece PDF dosyası yükleyin');
+      }
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    if (!file) {
-      alert('Lütfen bir dosya seçin');
-      setLoading(false);
+    if (!title || !category || !description || !file) {
+      alert('Lütfen tüm alanları doldurun');
       return;
     }
 
-    // Simüle edilmiş yükleme - gerçek uygulamada burada API çağrısı olacak
-    setTimeout(() => {
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('category', category);
+      formData.append('description', description);
+      formData.append('file', file);
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Bir hata oluştu');
+      }
+
       alert('Not başarıyla yüklendi!');
+      
+      // Formu temizle
       setTitle('');
+      setCategory('');
+      setDescription('');
       setFile(null);
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Bir hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-xl shadow-sm p-8">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Admin Paneli</h1>
-            <p className="mt-2 text-gray-600">Not yüklemek için aşağıdaki formu doldurun</p>
-          </div>
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+            Not Yükle
+          </h1>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Başlık */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Not Başlığı
+              <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Başlık
               </label>
               <input
                 type="text"
+                id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                placeholder="Örn: Ceza Hukuku Final Notları"
-                required
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                placeholder="Not başlığını girin"
               />
             </div>
 
+            {/* Kategori */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Kategori
               </label>
               <select
+                id="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
               >
+                <option value="">Kategori seçin</option>
                 {categories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
+                  <option key={cat.id} value={cat.id}>
+                    {cat.title}
                   </option>
                 ))}
               </select>
             </div>
 
+            {/* Açıklama */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Dosya (PDF veya Görsel)
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Açıklama
               </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
-                <div className="space-y-1 text-center">
-                  <svg
-                    className="mx-auto h-12 w-12 text-gray-400"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 48 48"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none"
-                    >
-                      <span>Dosya Yükle</span>
-                      <input
-                        id="file-upload"
-                        name="file-upload"
-                        type="file"
-                        accept=".pdf,image/*"
-                        className="sr-only"
-                        onChange={(e) => setFile(e.target.files?.[0] || null)}
-                        required
-                      />
-                    </label>
-                    <p className="pl-1">veya sürükleyip bırakın</p>
-                  </div>
-                  <p className="text-xs text-gray-500">PDF veya görsel dosyalar</p>
-                </div>
-              </div>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                rows={4}
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                placeholder="Not hakkında kısa bir açıklama yazın"
+              />
+            </div>
+
+            {/* Dosya Yükleme Alanı */}
+            <div
+              onDragEnter={handleDrag}
+              onDragLeave={handleDrag}
+              onDragOver={handleDrag}
+              onDrop={handleDrop}
+              className={`
+                relative border-2 border-dashed rounded-xl p-8 text-center
+                ${dragActive 
+                  ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' 
+                  : 'border-gray-300 dark:border-gray-600'
+                }
+              `}
+            >
+              <input
+                type="file"
+                accept=".pdf"
+                onChange={handleFileChange}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              />
+              <FaCloudUploadAlt className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-4" />
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                PDF dosyasını sürükleyip bırakın veya seçmek için tıklayın
+              </p>
               {file && (
-                <p className="mt-2 text-sm text-gray-600">
+                <div className="mt-4 text-sm text-gray-900 dark:text-white font-medium">
                   Seçilen dosya: {file.name}
-                </p>
+                </div>
               )}
             </div>
 
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                disabled={loading}
-                className={`px-6 py-2 text-white font-medium rounded-lg ${
-                  loading
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-indigo-600 hover:bg-indigo-700'
-                } transition-colors`}
-              >
-                {loading ? 'Yükleniyor...' : 'Notu Yükle'}
-              </button>
-            </div>
+            {/* Yükleme Butonu */}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`
+                w-full py-3 px-4 rounded-lg text-white font-medium
+                ${loading
+                  ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
+                  : 'bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600'
+                }
+                transition-colors duration-200
+              `}
+            >
+              {loading ? 'Yükleniyor...' : 'Notu Yükle'}
+            </button>
           </form>
         </div>
       </div>
