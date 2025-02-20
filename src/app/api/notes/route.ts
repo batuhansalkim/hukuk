@@ -1,5 +1,19 @@
 import { NextResponse } from 'next/server';
-import clientPromise from '@/app/lib/mongodb';
+
+// Geçici olarak sabit veri kullanıyoruz
+const dummyNotes = {
+  'ceza-hukuku': [
+    {
+      _id: '1',
+      title: 'Ceza Hukuku Genel Hükümler',
+      category: 'ceza-hukuku',
+      fileUrl: '#',
+      fileType: 'pdf',
+      createdAt: new Date().toISOString(),
+      description: 'Ceza hukuku genel hükümler ders notu'
+    }
+  ]
+};
 
 export async function GET(request: Request) {
   try {
@@ -13,18 +27,12 @@ export async function GET(request: Request) {
       );
     }
 
-    const client = await clientPromise;
-    const db = client.db('hukuk-notlari');
-    const collection = db.collection('notes');
-
-    const notes = await collection
-      .find({ category })
-      .sort({ createdAt: -1 })
-      .toArray();
-
-    return NextResponse.json(notes);
+    // MongoDB yerine sabit veriyi döndürüyoruz
+    const notes = dummyNotes[category as keyof typeof dummyNotes] || [];
+    
+    return NextResponse.json({ notes });
   } catch (error) {
-    console.error('Error fetching notes:', error);
+    console.error('Error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
