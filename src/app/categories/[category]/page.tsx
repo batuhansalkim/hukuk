@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { FaFilePdf, FaImage, FaDownload, FaEye } from 'react-icons/fa';
+import { FaFilePdf, FaDownload, FaEye } from 'react-icons/fa';
 
 interface Note {
   _id: string;

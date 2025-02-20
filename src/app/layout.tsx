@@ -3,7 +3,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { useEffect, useState } from 'react';
-import { metadata } from './metadata';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,15 +34,15 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-6">
-                <a href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
+                <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
                   Hukuk Notları
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/admin" 
                   className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 >
                   Admin Paneli
-                </a>
+                </Link>
               </div>
               <button
                 onClick={toggleDarkMode}

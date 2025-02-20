@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { FaBalanceScale, FaLandmark, FaScroll, FaUsers, FaHandshake, FaBuilding } from 'react-icons/fa';
 
 export default function Home() {
@@ -10,7 +9,7 @@ export default function Home() {
             Hukuk Notları Platformu
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Türkiye'nin en kapsamlı hukuk notu paylaşım platformu. 
+            Türkiye&apos;nin en kapsamlı hukuk notu paylaşım platformu. 
             Alanında uzman hukukçular tarafından hazırlanan notlara anında erişin.
           </p>
         </div>
