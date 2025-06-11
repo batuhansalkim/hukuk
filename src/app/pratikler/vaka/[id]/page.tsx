@@ -4,8 +4,20 @@ import { useParams } from 'next/navigation';
 import { FaArrowLeft } from 'react-icons/fa';
 import Link from 'next/link';
 
+// Vaka tipi tanımı
+interface Case {
+  title: string;
+  category: string;
+  description: string;
+}
+
+// Cases objesi için tip tanımı
+type Cases = {
+  [key: string]: Case;
+};
+
 // Vaka verilerini burada tutuyoruz (gerçek uygulamada bu veriler API'den gelecek)
-const cases = {
+const cases: Cases = {
   '1': {
     title: 'Miras Davası',
     category: 'Medeni Hukuk',
