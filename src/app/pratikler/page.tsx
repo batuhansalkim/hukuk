@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { FaGavel, FaBalanceScale, FaLandmark, FaBook, FaUniversity, FaHandshake, FaFileContract, FaUserTie, FaUsers } from 'react-icons/fa';
+import { FaGavel, FaBalanceScale, FaLandmark, FaUniversity, FaHandshake, FaFileContract, FaUserTie, FaUsers } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Resim boyutlarını optimize etmek için sabit değerler
-const SMALL_CARD_HEIGHT = 200;
-const MEDIUM_CARD_HEIGHT = 300;
-const LARGE_CARD_HEIGHT = 400;
+// Sabit değerler
+const CARD_SIZES = {
+  small: 'col-span-2 row-span-2',
+  medium: 'col-span-2 row-span-3',
+  large: 'col-span-2 row-span-4'
+} as const;
 
 interface PratikCase {
   id: string;
@@ -29,17 +31,6 @@ export default function PratiklerPage() {
   // Resim yüklendiğinde çağrılacak fonksiyon
   const handleImageLoad = (imageUrl: string) => {
     setLoadedImages(prev => new Set(prev).add(imageUrl));
-  };
-
-  const getCardHeight = (size: 'small' | 'medium' | 'large') => {
-    switch (size) {
-      case 'small':
-        return SMALL_CARD_HEIGHT;
-      case 'medium':
-        return MEDIUM_CARD_HEIGHT;
-      case 'large':
-        return LARGE_CARD_HEIGHT;
-    }
   };
 
   const pratikCases: PratikCase[] = [
@@ -167,9 +158,7 @@ export default function PratiklerPage() {
               key={pratikCase.id}
               className={`
                 relative overflow-hidden cursor-pointer rounded-lg
-                ${pratikCase.size === 'small' ? 'col-span-2 row-span-2' : 
-                  pratikCase.size === 'medium' ? 'col-span-2 row-span-3' : 
-                  'col-span-2 row-span-4'}
+                ${CARD_SIZES[pratikCase.size]}
                 ${pratikCase.bgColor}
                 group
               `}
