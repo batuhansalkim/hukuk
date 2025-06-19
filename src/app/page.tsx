@@ -61,14 +61,20 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex justify-center my-8 sm:my-16 lg:my-28 px-4 sm:px-6">
+        {/* Pratik Çalışmalara Göz At butonu grid dışına, ortalanmış ve genişliği sınırlı */}
+        <div className="w-full flex justify-center mt-8 sm:mt-12 lg:mt-16">
           <a 
             href="/pratikler" 
-            className="inline-flex items-center justify-center w-full sm:w-auto px-5 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 bg-indigo-600 text-white rounded-full text-lg sm:text-xl lg:text-2xl font-semibold hover:bg-indigo-700 transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            className="group block w-full max-w-xl min-h-[200px] sm:min-h-[250px] rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 bg-indigo-600 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 text-center flex flex-col justify-center items-center mx-auto"
           >
-            <span>Pratik Çalışmalara Göz At</span>
+            <span className="text-2xl sm:text-3xl font-extrabold tracking-wide mb-2 sm:mb-3 group-hover:text-indigo-200 transition-colors">
+              Pratik Çalışmalara Göz At
+            </span>
+            <span className="text-sm sm:text-base text-indigo-100 group-hover:text-indigo-200 mb-3 sm:mb-4 transition-colors">
+              Hukuk pratiklerini keşfet
+            </span>
             <svg 
-              className="w-5 h-5 sm:w-6 sm:h-6 ml-2 transform group-hover:translate-x-1 transition-transform" 
+              className="w-8 h-8 sm:w-10 sm:h-10 mt-2 text-white group-hover:text-indigo-200 transition-colors" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
