@@ -4,18 +4,19 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function WelcomeModal() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-    if (!hasSeenWelcome) {
-      setIsOpen(true);
-      localStorage.setItem('hasSeenWelcome', 'true');
-    }
-  }, []);
+  const [isOpen, setIsOpen] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const handleStart = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setIsOpen(false);
+    }, 2500);
   };
 
   return (
@@ -101,12 +102,18 @@ export default function WelcomeModal() {
                   </div>
                 </div>
 
-                <button
-                  onClick={closeModal}
-                  className="mt-12 px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
-                >
-                  Hemen Keşfetmeye Başla
-                </button>
+                {loading ? (
+                  <div className="mt-12 flex justify-center">
+                    <span className="inline-block w-10 h-10 border-4 border-white border-t-indigo-400 rounded-full animate-spin"></span>
+                  </div>
+                ) : (
+                  <button
+                    onClick={handleStart}
+                    className="mt-12 px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
+                  >
+                    Hemen Keşfetmeye Başla
+                  </button>
+                )}
               </div>
             </div>
           </motion.div>
