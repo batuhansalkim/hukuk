@@ -94,15 +94,12 @@ export default function RootLayout({
                         className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
                       >
                         <div className="py-1">
-                          <Link href="/contributors" className="block w-full text-left px-4 py-2 text-sm text-zinc-700 dark:text-gray-200 hover:bg-zinc-100 dark:hover:bg-gray-700">
-                            Emeği Geçenler
-                          </Link>
-                          <Link href="/contact" className="block w-full text-left px-4 py-2 text-sm text-zinc-700 dark:text-gray-200 hover:bg-zinc-100 dark:hover:bg-gray-700">
-                            İletişim
-                          </Link>
-                          <Link href="/more" className="block w-full text-left px-4 py-2 text-sm text-zinc-700 dark:text-gray-200 hover:bg-zinc-100 dark:hover:bg-gray-700">
-                            Daha Fazla
-                          </Link>
+                          <Link href="/contributors" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Emeği Geçenler</Link>
+                          <Link href="/contact" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">İletişim</Link>
+                          <Link href="/hukuk-sozlugu" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Hukuk Sözlüğü</Link>
+                          <Link href="/yasal-hesaplama" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Yasal Hesaplama Araçları</Link>
+                          <Link href="/nasil-katki-saglarim" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Nasıl Katkı Sağlarım?</Link>
+                          <Link href="/more" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Daha Fazla</Link>
                         </div>
                       </motion.div>
                     )}

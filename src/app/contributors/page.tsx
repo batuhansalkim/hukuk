@@ -1,29 +1,27 @@
 'use client';
 
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaEnvelope } from 'react-icons/fa';
 
 interface Contributor {
   name: string;
   role: string;
   imageUrl: string;
-  githubUrl?: string;
-  linkedinUrl?: string;
-  twitterUrl?: string;
+  email?: string;
 }
 
 const contributors: Contributor[] = [
   {
     name: 'Batuhan SALKIM',
     role: 'Kurucu ve Geliştirici',
-    imageUrl: 'https://avatars.githubusercontent.com/u/1?v=4', // Placeholder image
-    githubUrl: 'https://github.com/batuhansalkim',
-    linkedinUrl: 'https://linkedin.com/in/batuhansalkim',
-    twitterUrl: 'https://twitter.com/batuhansalkim',
+    imageUrl: '/images/batu.JPG',
+    email: 'batuhan@example.com',
   },
   {
-    name: 'AI Asistan',
-    role: 'İçerik ve Kod Desteği',
-    imageUrl: 'https://avatars.githubusercontent.com/u/2?v=4', // Placeholder image
+    name: 'Seymen GÜRBÜZ',
+    role: 'Kurucu ve Hukuk Notları Yazarı',
+    imageUrl: '/images/seymen.jpg',
+    email: 'seymen@example.com',
   },
   // Gelecekte buraya daha fazla kişi eklenebilir
 ];
@@ -41,39 +39,34 @@ export default function ContributorsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {contributors.map((contributor) => (
-            <div key={contributor.name} className="text-center bg-zinc-200 dark:bg-gray-800 p-6 rounded-2xl shadow-md">
-              <img
-                className="mx-auto h-32 w-32 rounded-full mb-4 object-cover"
-                src={contributor.imageUrl}
-                alt={contributor.name}
-              />
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-white">
-                {contributor.name}
-              </h3>
-              <p className="text-md text-teal-600 dark:text-teal-400 mb-4">
-                {contributor.role}
-              </p>
-              <div className="flex justify-center space-x-4">
-                {contributor.githubUrl && (
-                  <a href={contributor.githubUrl} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-700 dark:text-gray-400 dark:hover:text-white">
-                    <FaGithub className="w-6 h-6" />
-                  </a>
-                )}
-                {contributor.linkedinUrl && (
-                  <a href={contributor.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-700 dark:text-gray-400 dark:hover:text-white">
-                    <FaLinkedin className="w-6 h-6" />
-                  </a>
-                )}
-                {contributor.twitterUrl && (
-                  <a href={contributor.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-700 dark:text-gray-400 dark:hover:text-white">
-                    <FaTwitter className="w-6 h-6" />
-                  </a>
-                )}
+        <div className="text-center">
+          <div className="inline-grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {contributors.map((contributor) => (
+              <div key={contributor.name} className="text-center bg-zinc-200 dark:bg-gray-800 p-6 rounded-2xl shadow-md flex flex-col items-center">
+                <div className="relative w-32 h-32 rounded-full mb-4 overflow-hidden">
+                  <Image
+                    src={contributor.imageUrl}
+                    alt={contributor.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-zinc-900 dark:text-white">
+                  {contributor.name}
+                </h3>
+                <p className="text-md text-teal-600 dark:text-teal-400 mb-4">
+                  {contributor.role}
+                </p>
+                <div className="flex justify-center space-x-4 mt-auto">
+                  {contributor.email && (
+                    <a href={`mailto:${contributor.email}`} className="text-zinc-500 hover:text-zinc-700 dark:text-gray-400 dark:hover:text-white">
+                      <FaEnvelope className="w-6 h-6" />
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </main>
