@@ -1,5 +1,6 @@
 import { FaBalanceScale, FaLandmark, FaScroll, FaUsers, FaHandshake, FaBuilding } from 'react-icons/fa';
 import WelcomeModal from './components/WelcomeModal';
+import LawInfographic from './components/LawInfographic';
 
 export default function Home() {
   return (
@@ -94,40 +95,8 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-8 sm:mt-16 bg-zinc-200 dark:bg-indigo-900/20 rounded-2xl p-4 sm:p-8 text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-white mb-4">
-            Neden Hukuk Notları?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mt-6 sm:mt-8">
-            <div className="bg-zinc-100 dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
-              <div className="text-teal-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">📚</div>
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-800 dark:text-white mb-2">
-                Uzman İçerik
-              </h3>
-              <p className="text-sm sm:text-base text-zinc-600 dark:text-gray-400">
-                Alanında uzman hukukçular tarafından hazırlanan güvenilir notlar
-              </p>
-            </div>
-            <div className="bg-zinc-100 dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
-              <div className="text-teal-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">🔄</div>
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-800 dark:text-white mb-2">
-                Güncel Bilgiler
-              </h3>
-              <p className="text-sm sm:text-base text-zinc-600 dark:text-gray-400">
-                Sürekli güncellenen içerikler ve yeni yasal düzenlemeler
-              </p>
-            </div>
-            <div className="bg-zinc-100 dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
-              <div className="text-teal-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">💡</div>
-              <h3 className="text-base sm:text-lg font-semibold text-zinc-800 dark:text-white mb-2">
-                Kolay Erişim
-              </h3>
-              <p className="text-sm sm:text-base text-zinc-600 dark:text-gray-400">
-                PDF ve görsel formatında notlara anında erişim imkanı
-              </p>
-            </div>
-          </div>
-        </div>
+        <LawInfographic />
+
       </div>
     </main>
   );
