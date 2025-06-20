@@ -63,24 +63,34 @@ export default function Home() {
 
         {/* Pratik Çalışmalara Göz At butonu grid dışına, ortalanmış ve genişliği sınırlı */}
         <div className="w-full flex justify-center mt-8 sm:mt-12 lg:mt-16">
-          <a 
-            href="/pratikler" 
-            className="group block w-full max-w-xl min-h-[200px] sm:min-h-[250px] rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 bg-teal-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 text-center flex flex-col justify-center items-center mx-auto hover:bg-teal-800"
+          <a
+            href="/pratikler"
+            className="group relative overflow-hidden block w-full max-w-xl min-h-[200px] sm:min-h-[250px] rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 text-white focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
           >
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-wide mb-2 sm:mb-3 group-hover:text-teal-100 transition-colors">
-              Pratik Çalışmalara Göz At
-            </span>
-            <span className="text-sm sm:text-base text-teal-100 group-hover:text-teal-200 mb-3 sm:mb-4 transition-colors">
-              Hukuk pratiklerini keşfet
-            </span>
-            <svg 
-              className="w-8 h-8 sm:w-10 sm:h-10 mt-2 text-white group-hover:text-teal-100 transition-colors" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M5 7l5 5-5 5" />
-            </svg>
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+              style={{
+                backgroundImage: `url('/images/new.webp')`,
+              }}
+            />
+            <div className="absolute inset-0 bg-zinc-800/90 transition-colors duration-300 group-hover:bg-zinc-900/95" />
+
+            <div className="relative h-full flex flex-col justify-center items-center text-center p-4">
+              <span className="text-2xl sm:text-3xl font-extrabold tracking-wide mb-2 sm:mb-3 group-hover:text-zinc-100 transition-colors">
+                Pratik Çalışmalara Göz At
+              </span>
+              <span className="text-sm sm:text-base text-zinc-100 group-hover:text-zinc-200 mb-3 sm:mb-4 transition-colors">
+                Hukuk pratiklerini keşfet
+              </span>
+              <svg
+                className="w-8 h-8 sm:w-10 sm:h-10 mt-2 text-white group-hover:text-zinc-100 transition-colors"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M5 7l5 5-5 5" />
+              </svg>
+            </div>
           </a>
         </div>
 
