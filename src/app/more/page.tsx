@@ -16,7 +16,7 @@ export default function MorePage() {
             <li>Sıkça Sorulan Sorular (S.S.S.) bölümü eklenecek.</li>
             <li>Kullanıcılar için forum veya tartışma alanı oluşturulacak.</li>
             <li>Hukuk sözlüğü ve terimler bölümü hazırlanacak.</li>
-            <li className="font-semibold text-teal-600 dark:text-teal-400">Gelişmiş Hukuk Chatbot'u: Hukuksal konularda anında cevap verebilen, yapay zeka destekli bir asistan eklenecek.</li>
+            <li className="font-semibold text-teal-600 dark:text-teal-400">Gelişmiş Hukuk Chatbot&apos;u: Hukuksal konularda anında cevap verebilen, yapay zeka destekli bir asistan eklenecek.</li>
           </ul>
         </div>
       </div>
