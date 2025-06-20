@@ -3,14 +3,14 @@ import WelcomeModal from './components/WelcomeModal';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <main className="min-h-screen">
       <WelcomeModal />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
         <div className="text-center mb-8 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white mb-4 sm:mb-6">
             Hukuk Notları Platformu
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
+          <p className="text-lg sm:text-xl text-zinc-700 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
             Türkiye&apos;nin en kapsamlı hukuk notu paylaşım platformu. 
             Alanında uzman hukukçular tarafından hazırlanan notlara anında erişin.
           </p>
@@ -65,16 +65,16 @@ export default function Home() {
         <div className="w-full flex justify-center mt-8 sm:mt-12 lg:mt-16">
           <a 
             href="/pratikler" 
-            className="group block w-full max-w-xl min-h-[200px] sm:min-h-[250px] rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 bg-indigo-600 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 text-center flex flex-col justify-center items-center mx-auto"
+            className="group block w-full max-w-xl min-h-[200px] sm:min-h-[250px] rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 bg-teal-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 text-center flex flex-col justify-center items-center mx-auto hover:bg-teal-800"
           >
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-wide mb-2 sm:mb-3 group-hover:text-indigo-200 transition-colors">
+            <span className="text-2xl sm:text-3xl font-extrabold tracking-wide mb-2 sm:mb-3 group-hover:text-teal-100 transition-colors">
               Pratik Çalışmalara Göz At
             </span>
-            <span className="text-sm sm:text-base text-indigo-100 group-hover:text-indigo-200 mb-3 sm:mb-4 transition-colors">
+            <span className="text-sm sm:text-base text-teal-100 group-hover:text-teal-200 mb-3 sm:mb-4 transition-colors">
               Hukuk pratiklerini keşfet
             </span>
             <svg 
-              className="w-8 h-8 sm:w-10 sm:h-10 mt-2 text-white group-hover:text-indigo-200 transition-colors" 
+              className="w-8 h-8 sm:w-10 sm:h-10 mt-2 text-white group-hover:text-teal-100 transition-colors" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -84,35 +84,35 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-8 sm:mt-16 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-4 sm:p-8 text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-indigo-900 dark:text-white mb-4">
+        <div className="mt-8 sm:mt-16 bg-zinc-200 dark:bg-indigo-900/20 rounded-2xl p-4 sm:p-8 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-zinc-800 dark:text-white mb-4">
             Neden Hukuk Notları?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mt-6 sm:mt-8">
-            <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
-              <div className="text-indigo-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">📚</div>
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="bg-zinc-100 dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
+              <div className="text-teal-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">📚</div>
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-800 dark:text-white mb-2">
                 Uzman İçerik
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-gray-400">
                 Alanında uzman hukukçular tarafından hazırlanan güvenilir notlar
               </p>
             </div>
-            <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
-              <div className="text-indigo-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">🔄</div>
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="bg-zinc-100 dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
+              <div className="text-teal-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">🔄</div>
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-800 dark:text-white mb-2">
                 Güncel Bilgiler
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-gray-400">
                 Sürekli güncellenen içerikler ve yeni yasal düzenlemeler
               </p>
             </div>
-            <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
-              <div className="text-indigo-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">💡</div>
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="bg-zinc-100 dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-sm">
+              <div className="text-teal-600 dark:text-indigo-400 text-xl sm:text-2xl mb-3">💡</div>
+              <h3 className="text-base sm:text-lg font-semibold text-zinc-800 dark:text-white mb-2">
                 Kolay Erişim
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-gray-400">
                 PDF ve görsel formatında notlara anında erişim imkanı
               </p>
             </div>
@@ -139,7 +139,7 @@ function CategoryCard({
   return (
     <a
       href={href}
-      className="group relative overflow-hidden rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 min-h-[200px] sm:min-h-[250px]"
+      className="group relative overflow-hidden rounded-xl border border-zinc-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 min-h-[200px] sm:min-h-[250px]"
     >
       {/* Background Image with Overlay */}
       <div 
@@ -153,10 +153,10 @@ function CategoryCard({
       {/* Content */}
       <div className="relative p-4 sm:p-8 h-full flex flex-col">
         <div className="flex items-center mb-3 sm:mb-4">
-          <div className="text-white group-hover:text-indigo-400 transition-colors">
+          <div className="text-white group-hover:text-teal-300 transition-colors">
             {icon}
           </div>
-          <h2 className="text-lg sm:text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors ml-3 sm:ml-4">
+          <h2 className="text-lg sm:text-2xl font-bold text-white group-hover:text-teal-300 transition-colors ml-3 sm:ml-4">
             {title}
           </h2>
         </div>
